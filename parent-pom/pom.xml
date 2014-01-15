@@ -8,7 +8,13 @@
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
-		<javaxPer.version>2.1.0</javaxPer.version>
+		<javaxPer.version>1.0.1.Final</javaxPer.version>
+		<springData.version>1.0.1.RELEASE</springData.version>
+		<google.version>10.0.1</google.version>
+		<frameworkCtx.version>3.1.0.RELEASE</frameworkCtx.version>
+		<springTest.version>2.5</springTest.version>
+		<log4j.version>1.2.16</log4j.version>
+		<log4j12.version>1.6.1</log4j12.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -30,10 +36,40 @@
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>javax.persistence</artifactId>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.0-api</artifactId>
 				<version>${javaxPer.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${springData.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${google.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${frameworkCtx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${springTest.version}</version>
+			</dependency>
+			<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${log4j12.version}</version>
+        </dependency>
 		</dependencies>
 	</dependencyManagement>
 
