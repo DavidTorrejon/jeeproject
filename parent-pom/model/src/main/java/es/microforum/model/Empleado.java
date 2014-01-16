@@ -160,6 +160,6 @@ public class Empleado implements java.io.Serializable {
 				+ ", Direccion: " + direccion + ", Tipo Empleado: " + tipoEmpleado 
 				+ ", Empleado Col: " + empleadocol + ", Salario Anual: " + salarioAnual
 				+ ", Valor Hora: " + valorHora + ", Cantidad Horas: " + cantidadHoras
-				+ ", Version: " + version + ", Empresa: " + empresa.getNombre();
+				+ ", Version: " + version;
 	}
 }
