@@ -60,6 +60,7 @@ public class EmpresaServiceTest {
 		assertTrue(empresa1.getNif()!=null);
 		empresas = empresaService.findAll();
 		listaEmpresas(empresas);
+		listaEmpleados(empresa1);
 	}
 	
 	@Test
@@ -74,6 +75,7 @@ public class EmpresaServiceTest {
 		empresas = empresaService.findAll();
 		assertTrue(empresas.size()>0);
 		listaEmpresas(empresas);
+		listaEmpleados(empresa1);
 	}
 	
 	@Test	
@@ -82,9 +84,11 @@ public class EmpresaServiceTest {
 		empresa1 = empresaService.findByNif("123456");
 		empresa1.setNombre("Nombre cambiado");
 		empresaService.save(empresa1);
-		assertTrue(empresa1.getNombre().equals("Nombre cambiado"));
+		
 		empresas = empresaService.findAll();
 		listaEmpresas(empresas);
+		listaEmpleados(empresa1);
+		assertTrue(empresa1.getNombre().equals("Nombre cambiado"));		
 	}
 	
 	@Test
@@ -96,12 +100,22 @@ public class EmpresaServiceTest {
 		assertTrue(empresaService.findByNif("123456")==null);
 		empresas = empresaService.findAll();
 		listaEmpresas(empresas);
+		listaEmpleados(empresa1);
 	}	
 	
 	private static void listaEmpresas(List<Empresa> empresas) {
 		System.out.println("");
 		for (Empresa empresa : empresas) {
 			System.out.println(empresa);
+			System.out.println();
+		}
+	}
+	
+	private static void listaEmpleados(Empresa empresas) {
+		Set<Empleado>e=new HashSet<Empleado>();
+		e=empresas.getEmpleados();
+		for (Empleado emp : e) {
+			System.out.println(emp.getNombre());
 			System.out.println();
 		}
 	}
