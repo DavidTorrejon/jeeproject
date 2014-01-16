@@ -13,7 +13,6 @@ import org.junit.Test;
 import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 import es.microforum.serviceapi.EmpresaService;
-
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -54,15 +53,6 @@ public class EmpresaServiceTest {
 		
 		empresa1=new Empresa("123456","Empresa 1","Direccion 1",new Date(12,12,2012),empleados);
 	}
-
-	/*@Test
-	public void testAll(){
-		testSave();
-		testBusquedaNif();
-		testListado();
-		testModificar();
-		testDelete();
-	}*/
 		
 	@Test		
 	public void testSave() {
@@ -74,11 +64,13 @@ public class EmpresaServiceTest {
 	
 	@Test
 	public void testBusquedaNif() {
+		empresaService.save(empresa1);
 		assertTrue(empresaService.findByNif("123456")!=null);
 	}
 	
 	@Test
 	public void testListado() {
+		empresaService.save(empresa1);
 		empresas = empresaService.findAll();
 		assertTrue(empresas.size()>0);
 		listaEmpresas(empresas);
@@ -86,6 +78,7 @@ public class EmpresaServiceTest {
 	
 	@Test	
 	public void testModificar() {
+		empresaService.save(empresa1);
 		empresa1 = empresaService.findByNif("123456");
 		empresa1.setNombre("Nombre cambiado");
 		empresaService.save(empresa1);
@@ -96,6 +89,7 @@ public class EmpresaServiceTest {
 	
 	@Test
 	public void testDelete() {
+		empresaService.save(empresa1);
 		empresa1 = empresaService.findByNif("123456");
 		empresaService.delete(empresa1);
 		assertTrue(empresaService.findByNif("123456")==null);
