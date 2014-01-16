@@ -1,7 +1,6 @@
 package es.microforum.integrationtest;
 
 import static org.junit.Assert.*;
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,19 +14,20 @@ import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 import es.microforum.serviceapi.EmpresaService;
 
-//import org.junit.runner.RunWith;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.TestExecutionListeners;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.context.support.GenericXmlApplicationContext;
-//import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-//@TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional()
 public class EmpresaServiceTest {
 
-	GenericXmlApplicationContext ctx;
-	
+	@Autowired
 	EmpresaService empresaService;
 	
 	Empresa empresa1;
@@ -37,13 +37,6 @@ public class EmpresaServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		
-		ctx = new GenericXmlApplicationContext();
-		ctx.load("classpath:spring-data-app-context.xml");
-		ctx.refresh();
-		
-		empresaService = ctx.getBean("springJpaEmpresaService",
-				EmpresaService.class);
 		
 		empresas=new ArrayList<Empresa>();
 		
@@ -71,7 +64,7 @@ public class EmpresaServiceTest {
 		testDelete();
 	}*/
 		
-	@Test	
+	@Test		
 	public void testSave() {
 		empresaService.save(empresa1);
 		assertTrue(empresa1.getNif()!=null);
