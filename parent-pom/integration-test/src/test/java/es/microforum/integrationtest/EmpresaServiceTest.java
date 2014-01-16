@@ -91,6 +91,7 @@ public class EmpresaServiceTest {
 	public void testDelete() {
 		empresaService.save(empresa1);
 		empresa1 = empresaService.findByNif("123456");
+		assertTrue(empresa1.getNif()=="123456");
 		empresaService.delete(empresa1);
 		assertTrue(empresaService.findByNif("123456")==null);
 		empresas = empresaService.findAll();
