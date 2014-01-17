@@ -41,6 +41,10 @@ public class EmpleadoServiceTest {
 		empleado1.setTipoEmpleado("Tipo 1");
 		empleado1.setEmpleadocol("Col 1");
 		empleado1.setSalarioAnual(1000.00);
+		empleado1.setValorHora(10.0);
+		empleado1.setCantidadHoras(12.0);
+		empleado1.setVersion(1);
+		
 		
 		empleados=new ArrayList<Empleado>();								
 	}
@@ -49,6 +53,7 @@ public class EmpleadoServiceTest {
 	public void testSave() {
 		empleadoService.save(empleado1);
 		assertTrue(empleado1.getDni()!=null);
+		
 		empleados = empleadoService.findAll();
 		listaEmpleados(empleados);
 	}
@@ -64,6 +69,7 @@ public class EmpleadoServiceTest {
 		empleadoService.save(empleado1);
 		empleados = empleadoService.findAll();
 		assertTrue(empleados.size()>0);
+		
 		listaEmpleados(empleados);
 	}
 	
@@ -73,8 +79,11 @@ public class EmpleadoServiceTest {
 		empleado1 = empleadoService.findByDni("123456");
 		empleado1.setNombre("Nombre cambiado");
 		empleadoService.save(empleado1);
+		
 		assertTrue(empleado1.getNombre().equals("Nombre cambiado"));
+		
 		empleados = empleadoService.findAll();
+		
 		listaEmpleados(empleados);
 	}
 	
@@ -83,8 +92,11 @@ public class EmpleadoServiceTest {
 		empleadoService.save(empleado1);
 		empleado1 = empleadoService.findByDni("123456");
 		empleadoService.delete(empleado1);
+		
 		assertTrue(empleadoService.findByDni("123456")==null);
+		
 		empleados = empleadoService.findAll();
+		
 		listaEmpleados(empleados);
 	}	
 	
