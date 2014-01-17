@@ -103,16 +103,9 @@ public class Empresa implements java.io.Serializable {
 	}
 
 	public String toString() {
-		//String listado="";
-		//String lEmpleado="";
 		return "Empresa - Nif: " + nif + ", Nombre: " + nombre
 				+ ", Direccion Fiscal: " + direccionFiscal + ", Fecha Inicio Actividades: "
 				+ fechaInicioActividades + ", Version: " + version;
-		//+ ", Empleados: ";
-		/*for (Empleado e : empleados) {
-			lEmpleado+=e.toString()+ " ";
-		}
-		return listado + " " + lEmpleado;*/
 	}
 
 }
