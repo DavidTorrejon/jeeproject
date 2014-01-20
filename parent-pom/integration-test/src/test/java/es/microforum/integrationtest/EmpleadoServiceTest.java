@@ -12,6 +12,8 @@ import es.microforum.model.Empleado;
 import es.microforum.serviceapi.EmpleadoService;
 
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -24,6 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Transactional()
 public class EmpleadoServiceTest {
 
+	private static final Logger logger = LoggerFactory.getLogger(EmpleadoServiceTest.class);
+	
 	@Autowired
 	EmpleadoService empleadoService;
 	
@@ -45,36 +49,38 @@ public class EmpleadoServiceTest {
 		empleado1.setCantidadHoras(12.0);
 		empleado1.setVersion(1);
 		
+		empleados=new ArrayList<Empleado>();	
 		
-		empleados=new ArrayList<Empleado>();								
+		logger.info("Empleado creado - ");
 	}
 		
 	@Test		
 	public void testSave() {
+		logger.info("Test Save - ");
 		empleadoService.save(empleado1);
 		assertTrue(empleado1.getDni()!=null);
 		
-		empleados = empleadoService.findAll();
-		listaEmpleados(empleados);
+		empleados = empleadoService.findAll();		
 	}
 	
 	@Test
 	public void testBusquedaDni() {
+		logger.info("Test Busqueda Dni - ");
 		empleadoService.save(empleado1);
 		assertTrue(empleadoService.findByDni("123456")!=null);
 	}
 	
 	@Test
 	public void testListado() {
+		logger.info("Test Listado - ");
 		empleadoService.save(empleado1);
 		empleados = empleadoService.findAll();
 		assertTrue(empleados.size()>0);
-		
-		listaEmpleados(empleados);
 	}
 	
 	@Test	
 	public void testModificar() {
+		logger.info("Test Modificar - ");
 		empleadoService.save(empleado1);
 		empleado1 = empleadoService.findByDni("123456");
 		empleado1.setNombre("Nombre cambiado");
@@ -83,12 +89,11 @@ public class EmpleadoServiceTest {
 		assertTrue(empleado1.getNombre().equals("Nombre cambiado"));
 		
 		empleados = empleadoService.findAll();
-		
-		listaEmpleados(empleados);
 	}
 	
 	@Test
 	public void testDelete() {
+		logger.info("Test Delete - ");
 		empleadoService.save(empleado1);
 		empleado1 = empleadoService.findByDni("123456");
 		empleadoService.delete(empleado1);
@@ -96,15 +101,5 @@ public class EmpleadoServiceTest {
 		assertTrue(empleadoService.findByDni("123456")==null);
 		
 		empleados = empleadoService.findAll();
-		
-		listaEmpleados(empleados);
 	}	
-	
-	private static void listaEmpleados(List<Empleado> empleados) {
-		System.out.println("");
-		for (Empleado e : empleados) {
-			System.out.println(e);
-			System.out.println();
-		}
-	}
 }
