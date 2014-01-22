@@ -3,6 +3,8 @@ package es.microforum.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import es.microforum.model.Empleado;
 import es.microforum.repository.EmpleadoRepository;
 import es.microforum.serviceapi.EmpleadoService;
-
 import com.google.common.collect.Lists;
 
 @Service("springJpaEmpleadoService")
@@ -37,5 +38,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
 	public void delete(Empleado empleado) {
 		empleadoRepository.delete(empleado);
+	}
+	
+	public Page<Empleado> findByNombrePageable(String name, Pageable pageable) {
+		return empleadoRepository.findByNombrePageable(name, pageable);
 	}
 }
