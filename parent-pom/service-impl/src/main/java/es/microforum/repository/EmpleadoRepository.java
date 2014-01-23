@@ -12,6 +12,6 @@ public interface EmpleadoRepository extends PagingAndSortingRepository<Empleado,
 	
 	public void delete(Empleado empleado);
 	
-	Page<Empleado> findByNombrePageable(String nombre, Pageable pageable);	
+	Page<Empleado> findByNombre(String nombre, Pageable pageable);	
 	
 }
