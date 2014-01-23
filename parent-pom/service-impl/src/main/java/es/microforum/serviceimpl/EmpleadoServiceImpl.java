@@ -40,7 +40,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		empleadoRepository.delete(empleado);
 	}
 	
-	public Page<Empleado> findByNombrePageable(String name, Pageable pageable) {
-		return empleadoRepository.findByNombrePageable(name, pageable);
+	public Page<Empleado> findByNombre(String nombre, Pageable pageable) {
+		return empleadoRepository.findByNombre(nombre, pageable);
 	}
 }
