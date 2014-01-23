@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
@@ -33,6 +34,8 @@ public class EmpleadoServiceTest {
 	
 	Empleado empleado1;	
 	List<Empleado> empleados;
+	
+	Pageable pageable;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -101,5 +104,13 @@ public class EmpleadoServiceTest {
 		assertTrue(empleadoService.findByDni("123456")==null);
 		
 		empleados = empleadoService.findAll();
+	}	
+	
+	@Test
+	public void testPage() {
+		logger.info("Test Page - ");
+		empleadoService.save(empleado1);
+		
+		assertTrue(empleadoService.findByNombre("juan", pageable)!=null);
 	}	
 }
