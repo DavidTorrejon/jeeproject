@@ -40,6 +40,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		empleadoRepository.delete(empleado);
 	}
 	
+	@Transactional(readOnly = true)
 	public Page<Empleado> findByNombre(String nombre, Pageable pageable) {
 		return empleadoRepository.findByNombre(nombre, pageable);
 	}
