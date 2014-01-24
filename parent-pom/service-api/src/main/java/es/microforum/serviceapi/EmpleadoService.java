@@ -23,4 +23,7 @@ public interface EmpleadoService {
 	
 	// Busqueda por nombre paginado
 	Page<Empleado> findByNombre(String nombre, Pageable pageable);
+	
+	// Busqueda de todos los empleados paginado
+	Page<Empleado> findAll(Pageable pageable);
 }
