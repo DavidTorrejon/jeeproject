@@ -113,4 +113,12 @@ public class EmpleadoServiceTest {
 		
 		assertTrue(empleadoService.findByNombre("juan", pageable)!=null);
 	}	
+	
+	@Test
+	public void testPageAll() {
+		logger.info("Test Page all - ");
+		empleadoService.save(empleado1);
+		
+		assertTrue(empleadoService.findAll(pageable)!=null);
+	}	
 }
