@@ -14,4 +14,6 @@ public interface EmpleadoRepository extends PagingAndSortingRepository<Empleado,
 	
 	Page<Empleado> findByNombre(String nombre, Pageable pageable);	
 	
+	Page<Empleado> findAll(Pageable pageable);
+	
 }
