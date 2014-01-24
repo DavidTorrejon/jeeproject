@@ -44,4 +44,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	public Page<Empleado> findByNombre(String nombre, Pageable pageable) {
 		return empleadoRepository.findByNombre(nombre, pageable);
 	}
+	
+	@Transactional(readOnly=true)
+	public Page<Empleado> findAll(Pageable pageable) {
+		return empleadoRepository.findAll(pageable);
+	}	
 }
