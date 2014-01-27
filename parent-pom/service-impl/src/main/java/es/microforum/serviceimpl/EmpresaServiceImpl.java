@@ -3,6 +3,8 @@ package es.microforum.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,4 +40,14 @@ public class EmpresaServiceImpl implements EmpresaService {
 	public void delete(Empresa empresa) {
 		empresaRepository.delete(empresa);
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<Empresa> findByNombre(String nombre, Pageable pageable) {
+		return empresaRepository.findByNombre(nombre, pageable);
+	}
+	
+	@Transactional(readOnly=true)
+	public Page<Empresa> findAll(Pageable pageable) {
+		return empresaRepository.findAll(pageable);
+	}	
 }
