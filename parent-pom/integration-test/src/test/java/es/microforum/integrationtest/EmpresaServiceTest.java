@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
@@ -34,6 +35,8 @@ public class EmpresaServiceTest {
 	
 	Empresa empresa1;
 	List<Empresa> empresas;
+	
+	Pageable pageable;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -99,5 +102,21 @@ public class EmpresaServiceTest {
 		assertTrue(empresaService.findByNif("123456789")==null);
 		
 		empresas = empresaService.findAll();
+	}	
+	
+	@Test
+	public void testPage() {
+		logger.info("Test Page - ");
+		empresaService.save(empresa1);
+		
+		assertTrue(empresaService.findByNombre("Empresa 1", pageable)!=null);
+	}	
+	
+	@Test
+	public void testPageAll() {
+		logger.info("Test Page all - ");
+		empresaService.save(empresa1);
+		
+		assertTrue(empresaService.findAll(pageable)!=null);
 	}	
 }
