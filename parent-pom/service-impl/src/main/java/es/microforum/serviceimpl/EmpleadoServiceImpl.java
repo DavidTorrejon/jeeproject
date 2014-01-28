@@ -31,6 +31,12 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	public Empleado findByDni(String dni) {
 		return empleadoRepository.findOne(dni);
 	}
+	
+	public Empleado findByDniEmpresa(String dni) {
+		Empleado empleado=empleadoRepository.findOne(dni);
+		empleado.getEmpresa().getEmpleados().size();
+		return empleado;
+	}
 
 	public Empleado save(Empleado empleado) {
 		return empleadoRepository.save(empleado);
