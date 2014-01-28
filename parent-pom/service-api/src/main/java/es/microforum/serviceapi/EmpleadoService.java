@@ -14,6 +14,9 @@ public interface EmpleadoService {
 
 	// Empleado por DNI
 	public Empleado findByDni(String dni);
+	
+	// Empleado por DNI con empresa
+	public Empleado findByDniEmpresa(String dni);
 
 	// Insert o update a empleado
 	public Empleado save(Empleado empleado);
