@@ -72,7 +72,7 @@ public class EmpleadoServiceTest {
 		empleadoService.save(empleado1);
 		assertTrue(empleadoService.findByDni("123456")!=null);
 	}
-	
+			
 	@Test
 	public void testListado() {
 		logger.info("Test Listado - ");
