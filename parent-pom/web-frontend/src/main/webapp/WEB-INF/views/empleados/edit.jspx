@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:message code="label_empleado_new" var="labelEmpleadoNew" />
+	<spring:message code="label_empleado_update" var="labelEmpleadoUpdate" />
+	<spring:message code="label_empleado_nombre" var="labelEmpleadoNombre" />
+	<spring:message code="label_empleado_dni" var="labelEmpleadoDni" />
+	<spring:message code="label_empleado_tipoEmpleado"
+		var="labelEmpleadoTipo" />
+	<spring:message code="label_empleadocol" var="labelEmpleadoCol" />
+	<spring:message code="label_empleado_direccion"
+		var="labelEmpleadoDireccion" />
+	<spring:message code="label_empleado_salarioAnual"
+		var="labelEmpleadoSalarioAnual" />
+	<spring:message code="label_empleado_valorHora"
+		var="labelEmpleadoValorHora" />
+	<spring:message code="label_empleado_cantidadHoras"
+		var="labelEmpleadoCantidadHoras" />
+	<spring:message code="label_empleado_imagen" var="labelEmpleadoImagen" />
+	<spring:message code="label_empleado_nif" var="labelEmpleadoNif" />
+	<spring:message code="label_empleado_version"
+		var="labelEmpleadoVersion" />
+	<spring:eval
+		expression="empleado.dni == null ? labelEmpleadoNew:labelEmpleadoUpdate"
+		var="formTitle" />
+
+	<h1>${formTitle}</h1>
+	<div id="empleadoUpdate">
+		<form:form modelAttribute="empleado" id="labelEmpleadoUpdate"
+			method="post" enctype="multipart/form-data">
+			<c:if test="${not empty message}">
+				<div id="message" class="${message.type}">${message.message}</div>
+			</c:if>
+			<c:if test="${empleado.dni==null}">
+				<form:label path="dni">
+            		${labelEmpleadoDni}*
+        		</form:label>
+				<form:input path="dni" />
+			</c:if>
+			<c:if test="${empleado.dni!=null}">
+				<form:label path="dni">
+            		${labelEmpleadoDni}
+        		</form:label>
+				<form:input readonly="true" path="dni" />
+			</c:if>
+			<div>
+				<form:errors path="dni" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="nombre">
+            ${labelEmpleadoNombre}
+        </form:label>
+			<form:input path="nombre" />
+			<div>
+				<form:errors path="nombre" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="direccion">
+            ${labelEmpleadoDireccion} 
+        </form:label>
+			<form:input path="direccion" />
+			<div>
+				<form:errors path="direccion" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="salarioAnual">
+            ${labelEmpleadoSalarioAnual}
+        </form:label>
+			<form:input path="salarioAnual" />
+			<div>
+				<form:errors path="salarioAnual" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="valorHora">
+            ${labelEmpleadoValorHora}
+         </form:label>
+			<form:input path="valorHora" />
+			<div>
+				<form:errors path="valorHora" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="cantidadHoras">
+            ${labelEmpleadoCantidadHoras}
+         </form:label>
+			<form:input path="cantidadHoras" />
+			<div>
+				<form:errors path="cantidadHoras" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="tipoEmpleado">
+            ${labelEmpleadoTipo}
+         </form:label>
+			<form:input path="tipoEmpleado" />
+			<div>
+				<form:errors path="tipoEmpleado" cssClass="error" />
+			</div>
+			<p />
+			<form:label path="empleadocol">
+            ${labelEmpleadoCol}
+         </form:label>
+			<form:input path="empleadocol" />
+			<div>
+				<form:errors path="empleadocol" cssClass="error" />
+			</div>
+			<p />
+			<c:if test="${empleado.dni==null}">
+				<form:label path="empresa">
+            		${labelEmpleadoNif}
+         		</form:label>
+				<form:select path="empresa" items="${empresas}" id="nif" />
+			</c:if>
+			<c:if test="${empleado.dni!=null}">
+				<form:label path="empresa">
+            		${labelEmpleadoNif}
+         		</form:label>
+				<form:select path="empresa">
+					<c:forEach items="${seleccionado}" var="sel">
+						<c:set var="selitem" value="${sel.value}"/>
+						<form:options items="${selecionado}" itemValue="key" itemLabel="value" />
+					</c:forEach>
+					<form:options items="${empresas}" itemValue="nif" itemLabel="nombre" />			
+				</form:select>
+			</c:if>
+			<div>
+				<form:errors path="empresa" cssClass="error" />
+			</div>
+			<p />
+			<label for="file"> ${labelEmpleadoImagen} </label>
+			<input name="file" type="file" />
+			<p />
+
+			<form:hidden path="version" />
+
+			<button name="submit" type="submit"
+				class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+				<span class="ui-button-text">Salvar</span>
+			</button>
+			<button name="reset" type="reset"
+				class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+				<span class="ui-button-text">Limpiar</span>
+			</button>
+
+		</form:form>
+	</div>
+
+</div>
