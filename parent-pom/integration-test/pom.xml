@@ -21,6 +21,13 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>es.microforum</groupId>
+			<artifactId>service-frontend</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
