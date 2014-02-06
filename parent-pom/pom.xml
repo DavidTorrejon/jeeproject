@@ -9,7 +9,7 @@
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<javaxPer.version>1.0.1.Final</javaxPer.version>
-		<springData.version>1.0.1.RELEASE</springData.version>
+		<springData.version>1.3.0.RELEASE</springData.version>
 		<hCore.version>4.3.0.Final</hCore.version>
 		<google.version>10.0.1</google.version>
 		<mysql.version>5.1.28</mysql.version>
@@ -18,8 +18,10 @@
 		<logback.version>1.0.1</logback.version>
 		<commonsCore.version>1.1.0.RELEASE</commonsCore.version>
 		<log4j.version>1.2.15</log4j.version>
-<!-- 		<javaee.version>7.0</javaee.version> -->
-<!-- 		<org.springsecurity-version>3.1.0.RELEASE</org.springsecurity-version> -->
+		<rest.version>1.1.0.M1</rest.version>
+		<servlet.api.version>3.0.1</servlet.api.version>
+		<!-- <javaee.version>7.0</javaee.version> -->
+		<!-- <org.springsecurity-version>3.1.0.RELEASE</org.springsecurity-version> -->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -94,6 +96,11 @@
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.hibernate.javax.persistence</groupId>
 				<artifactId>hibernate-jpa-2.0-api</artifactId>
 				<version>${javaxPer.version}</version>
@@ -135,64 +142,44 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-rest-webmvc</artifactId>
+				<version>${rest.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-commons-core</artifactId>
 				<version>${commonsCore.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.api.version}</version>
+			</dependency>
 
 			<!-- Servlet -->
-			<!-- <dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-web-api</artifactId>
-				<version>${javaee.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>2.5</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet.jsp</groupId>
-				<artifactId>jsp-api</artifactId>
-				<version>2.1</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>jstl</artifactId>
-				<version>1.2</version>
-			</dependency>
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time-jsptags</artifactId>
-				<version>1.1.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.tiles</groupId>
-				<artifactId>tiles-core</artifactId>
-				<version>2.2.2</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.tiles</groupId>
-				<artifactId>tiles-jsp</artifactId>
-				<version>2.2.2</version>
-			</dependency>
-			JSON
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-mapper-lgpl</artifactId>
-				<version>1.9.13</version>
-			</dependency>
-
-			Apache Commons
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>1.3.2</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-web-api</artifactId> 
+				<version>${javaee.version}</version> </dependency> <dependency> <groupId>javax.servlet</groupId> 
+				<artifactId>servlet-api</artifactId> <version>2.5</version> </dependency> 
+				<dependency> <groupId>javax.servlet.jsp</groupId> <artifactId>jsp-api</artifactId> 
+				<version>2.1</version> </dependency> <dependency> <groupId>javax.servlet</groupId> 
+				<artifactId>jstl</artifactId> <version>1.2</version> </dependency> <dependency> 
+				<groupId>joda-time</groupId> <artifactId>joda-time-jsptags</artifactId> <version>1.1.1</version> 
+				</dependency> <dependency> <groupId>org.apache.tiles</groupId> <artifactId>tiles-core</artifactId> 
+				<version>2.2.2</version> </dependency> <dependency> <groupId>org.apache.tiles</groupId> 
+				<artifactId>tiles-jsp</artifactId> <version>2.2.2</version> </dependency> 
+				JSON <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-lgpl</artifactId> 
+				<version>1.9.13</version> </dependency> Apache Commons <dependency> <groupId>commons-io</groupId> 
+				<artifactId>commons-io</artifactId> <version>1.3.2</version> </dependency> -->
 
 			<!-- Spring Security -->
 			<dependency>
@@ -217,17 +204,9 @@
 			</dependency>
 
 			<!-- Mock Object Library -->
-			<!-- <dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-core</artifactId>
-				<version>1.9.0</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>1.3</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>org.mockito</groupId> <artifactId>mockito-core</artifactId> 
+				<version>1.9.0</version> <scope>test</scope> </dependency> <dependency> <groupId>commons-fileupload</groupId> 
+				<artifactId>commons-fileupload</artifactId> <version>1.3</version> </dependency> -->
 		</dependencies>
 	</dependencyManagement>
 
@@ -246,6 +225,14 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
