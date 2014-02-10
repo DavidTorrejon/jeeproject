@@ -29,4 +29,7 @@ public interface EmpleadoService {
 	
 	// Busqueda de todos los empleados paginado
 	Page<Empleado> findAll(Pageable pageable);
+	
+	// Aumento de sueldo para los empleados
+	public double callAumentoSueldo(double porcentaje);
 }

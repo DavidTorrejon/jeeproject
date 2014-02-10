@@ -54,5 +54,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	@Transactional(readOnly=true)
 	public Page<Empleado> findAll(Pageable pageable) {
 		return empleadoRepository.findAll(pageable);
+	}
+
+	@Override
+	public double callAumentoSueldo(double porcentaje) {
+		return porcentaje;
 	}	
 }
