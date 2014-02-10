@@ -237,6 +237,7 @@
 		<module>service-impl</module>
 		<module>service-frontend</module>
 		<module>web-frontend</module>
+		<module>service-frontendSOAP</module>
 	</modules>
 	<build>
 		<plugins>
