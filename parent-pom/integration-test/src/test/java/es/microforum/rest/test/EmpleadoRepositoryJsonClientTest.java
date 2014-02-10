@@ -40,7 +40,7 @@ public class EmpleadoRepositoryJsonClientTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(EmpleadoRepositoryJsonClientTest.class);
 	
-	private final String empleadoUrl = "http://localhost:8080/service-frontend-0.0.3-SNAPSHOT/empleado";
+	private final String empleadoUrl = "http://localhost:8080/service-frontend-0.0.3/empleado";
 
 	private String acceptHeaderValue = "application/json";
 
@@ -62,7 +62,7 @@ public class EmpleadoRepositoryJsonClientTest {
 		// Empleado con dni:1111 y nombre 1111
 		try {
 			Resource<Empleado> resource = getEmpleado(new URI(
-					"http://localhost:8080/service-frontend-0.0.3-SNAPSHOT/empleado/1111"));
+					"http://localhost:8080/service-frontend-0.0.3/empleado/1111"));
 			assertTrue(resource.getContent().getNombre().equals("1111"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class EmpleadoRepositoryJsonClientTest {
 
 		try {
 			final URI empleadoUri = new URI(empleadoUrl);
-			final String empresaUrl11 = "http://localhost:8080/service-frontend-0.0.3-SNAPSHOT/empresa/11"; 
+			final String empresaUrl11 = "http://localhost:8080/service-frontend-0.0.3/empresa/11"; 
 			
 			HttpHeaders requestHeaders = new HttpHeaders();
 			List<MediaType> mediaTypes = new ArrayList<MediaType>();

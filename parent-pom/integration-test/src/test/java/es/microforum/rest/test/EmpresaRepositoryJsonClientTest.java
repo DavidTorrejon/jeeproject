@@ -42,7 +42,7 @@ public class EmpresaRepositoryJsonClientTest {
 	private static final Logger logger = LoggerFactory
 			.getLogger(EmpresaRepositoryJsonClientTest.class);
 
-	private final String empresaUrl = "http://localhost:8080/service-frontend-0.0.3-SNAPSHOT/empresa";
+	private final String empresaUrl = "http://localhost:8080/service-frontend-0.0.3/empresa";
 
 	private String acceptHeaderValue = "application/json";
 
@@ -64,7 +64,7 @@ public class EmpresaRepositoryJsonClientTest {
 		// Empresa con nif:11 y nombre Empresa1
 		try {
 			Resource<Empresa> resource = getEmpresa(new URI(
-					"http://localhost:8080/service-frontend-0.0.3-SNAPSHOT/empresa/11"));
+					"http://localhost:8080/service-frontend-0.0.3/empresa/1"));
 			assertTrue(resource.getContent().getNombre().equals("Empresa1"));
 		} catch (Exception e) {
 			e.printStackTrace();
