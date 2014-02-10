@@ -52,30 +52,28 @@ public class JaxServiceClientTest {
 
 	@Test
 	public void testCallAumentoSueldo() {
+			
+		Empleado prueba=new Empleado();
 		
-		double result=0.0;
-		
-		Empleado aux=new Empleado();
+		List<Empleado> aux=new ArrayList<Empleado>();
 		
 		empleados = empleadoService.findAll();
 		
 		try {
-			result = empleadoWebService.callAumentoSueldo(20.0);
-			assertTrue(result==20.0);
+			aux = empleadoWebService.callAumentoSueldo(empleados,20.0);
+			assertTrue(aux.size()!=0);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail();
 		}
 		
-		for(Empleado e:empleados){
+		for(Empleado e:aux){
 			if(e.getDni().equals("1111")){
-				aux=e;
+				prueba=e;
 			}
-			e.setSalarioAnual(e.getSalarioAnual()*result/100+e.getSalarioAnual());
 		}
 		
-		assertTrue(aux.getSalarioAnual().equals("27.6"));
-		
+		assertTrue(prueba.getSalarioAnual().equals("27.6"));		
 	}
 		
 }
