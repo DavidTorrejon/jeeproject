@@ -31,5 +31,5 @@ public interface EmpleadoService {
 	Page<Empleado> findAll(Pageable pageable);
 	
 	// Aumento de sueldo para los empleados
-	public double callAumentoSueldo(double porcentaje);
+	public List<Empleado> callAumentoSueldo(List<Empleado>empleados);
 }

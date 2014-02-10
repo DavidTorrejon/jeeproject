@@ -57,7 +57,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
-	public double callAumentoSueldo(double porcentaje) {
-		return porcentaje;
+	public List<Empleado> callAumentoSueldo(List<Empleado>empleados) {
+		return empleados;
 	}	
 }
