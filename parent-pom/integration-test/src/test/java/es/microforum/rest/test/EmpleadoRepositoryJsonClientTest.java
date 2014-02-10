@@ -124,7 +124,7 @@ public class EmpleadoRepositoryJsonClientTest {
 		logger.info("Test Modificar - ");
 
 		jdbcTemplate
-				.execute("INSERT INTO empleado(`dni`, `nombre`, `direccion`, `nif`, `version`) VALUES ('prueba','prueba','prueba','11',1);");
+				.execute("INSERT INTO empleado(`dni`, `nombre`, `direccion`, `nif`, `version`) VALUES ('prueba','prueba','prueba','1',1);");
 
 		String url = empleadoUrl + "/prueba";
 
@@ -153,7 +153,7 @@ public class EmpleadoRepositoryJsonClientTest {
 		logger.info("Test Delete - ");
 
 		jdbcTemplate
-		.execute("INSERT INTO empleado(`dni`, `nombre`, `direccion`, `nif`, `version`) VALUES ('prueba','prueba','prueba','11',1);");
+		.execute("INSERT INTO empleado(`dni`, `nombre`, `direccion`, `nif`, `version`) VALUES ('prueba','prueba','prueba','1',1);");
 
 		try {
 			restTemplate.delete(empleadoUrl + "/prueba");
