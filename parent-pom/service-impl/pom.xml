@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>es.microforum</groupId>
 		<artifactId>parent-pom</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>service-impl</artifactId>
 	<dependencies>
@@ -15,13 +15,13 @@
 		<dependency>
 			<groupId>es.microforum</groupId>
 			<artifactId>model</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>es.microforum</groupId>
 			<artifactId>service-api</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
