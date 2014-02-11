@@ -19,14 +19,8 @@ public class EmpleadoWebService {
 	}
 	
 	@WebMethod(operationName="callaumentosueldo")
-	public List<Empleado> callAumentoSueldo(List<Empleado>empleados,double porcentaje){
-		List<Empleado>listEmpleado=new ArrayList<Empleado>();
-		Double resultado=0.0;
-		for(Empleado e:empleados){
-			resultado=((e.getSalarioAnual()*porcentaje)/100)+e.getSalarioAnual();
-			e.setSalarioAnual(resultado);
-			listEmpleado.add(e);
-		}		
-		return empleadoService.callAumentoSueldo(listEmpleado);
+	public double callAumentoSueldo(double porcentaje){
+		return empleadoService.callAumentoSueldo(porcentaje);
 	}
+
 }
