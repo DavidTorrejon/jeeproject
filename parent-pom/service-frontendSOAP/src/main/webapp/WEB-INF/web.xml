@@ -18,6 +18,6 @@
 
 	<servlet-mapping>
 		<servlet-name>jaxws-servlet</servlet-name>
-		<url-pattern>/empleado</url-pattern>
+		<url-pattern>/empleadoService</url-pattern>
 	</servlet-mapping>
 </web-app>

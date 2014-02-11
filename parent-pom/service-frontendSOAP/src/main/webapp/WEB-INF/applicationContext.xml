@@ -11,7 +11,7 @@
         http://jax-ws.dev.java.net/spring/servlet.xsd"
 >
  
-    <wss:binding url="/empleado">
+    <wss:binding url="/empleadoService">
         <wss:service>
             <ws:service bean="#EmpleadoWs"/>
         </wss:service>
@@ -19,9 +19,9 @@
  
     <!-- Web service methods -->
     <bean id="EmpleadoWs" class="es.microforum.servicefrontendsoap.EmpleadoWebService">
-    	<property name="empleado" ref="empleado" />
+    	<property name="empleadoService" ref="empleadoService" />
     </bean>
  
-    <bean id="empleado" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
+    <bean id="empleadoService" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
  
 </beans>
