@@ -23,8 +23,8 @@ import es.microforum.servicefrontendsoap.IEmpleadoWebService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional()
+//@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+//@Transactional()
 public class JaxServiceClientTest {
 	
 	@Autowired
@@ -53,27 +53,50 @@ public class JaxServiceClientTest {
 	@Test
 	public void testCallAumentoSueldo() {
 			
-		Empleado prueba=new Empleado();
+		//Sueldo 23.0
 		
-		List<Empleado> aux=new ArrayList<Empleado>();
+		Empleado prueba=new Empleado();
+		Empleado mod=new Empleado();
+		
+		double result=0.0;
 		
 		empleados = empleadoService.findAll();
 		
 		try {
-			aux = empleadoWebService.callAumentoSueldo(empleados,20.0);
-			assertTrue(aux.size()!=0);
+			result = empleadoWebService.callAumentoSueldo(20.0);
+			assertTrue(result!=0);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail();
 		}
 		
-		for(Empleado e:aux){
+		List<Empleado>listEmpleado=new ArrayList<Empleado>();
+		Double resultado=0.0;
+		for(Empleado e:empleados){
+			empleadoService.save(e);
+			
+			mod=empleadoService.findByDni(e.getDni());
+			
+			resultado=((e.getSalarioAnual()*result)/100)+e.getSalarioAnual();
+			
+			mod.setSalarioAnual(resultado);
+			
+			empleadoService.save(mod);
+			
+			listEmpleado.add(mod);
+		}		
+		
+		for(Empleado e:listEmpleado){
 			if(e.getDni().equals("1111")){
 				prueba=e;
 			}
-		}
-		
-		assertTrue(prueba.getSalarioAnual().equals("27.6"));		
+		}		
+		assertTrue(prueba.getSalarioAnual()==27.6);		
+				
+	}
+	
+	private String auDis (double porcentaje){
+		return "";
 	}
 		
 }
