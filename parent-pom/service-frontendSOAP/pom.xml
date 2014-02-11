@@ -8,11 +8,6 @@
 	</parent>
 	<artifactId>service-frontendSOAP</artifactId>
 	<packaging>war</packaging>
-	
-	<!-- <groupId>es.microforum</groupId>
-	
-	<version>0.0.4-SNAPSHOT</version>
-	<packaging> war</packaging> -->
 
 	<properties>
 
