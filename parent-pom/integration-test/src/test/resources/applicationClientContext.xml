@@ -19,7 +19,7 @@
 		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
 		<property name="serviceInterface" value="es.microforum.servicefrontendsoap.IEmpleadoWebService" />
 		<property name="wsdlDocumentUrl"
-			value="http://localhost:8080/webServiceEmpleado/empleado?wsdl" />			
+			value="http://localhost:8080/service-frontendSOAP-0.0.4-SNAPSHOT/empleadoService?wsdl" />			
 		<property name="serviceName" value="EmpleadoWebServiceService" />
 		<property name="namespaceUri" value="http://servicefrontendsoap.microforum.es/" />
 		<property name="portName" value="EmpleadoWebServicePort" />
