@@ -23,8 +23,8 @@ import es.microforum.servicefrontendsoap.IEmpleadoWebService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
-//@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-//@Transactional()
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@Transactional()
 public class JaxServiceClientTest {
 	
 	@Autowired
@@ -62,13 +62,13 @@ public class JaxServiceClientTest {
 		
 		empleados = empleadoService.findAll();
 		
-		try {
+		/*try {
 			result = empleadoWebService.callAumentoSueldo(20.0);
 			assertTrue(result!=0);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail();
-		}
+		}*/
 		
 		List<Empleado>listEmpleado=new ArrayList<Empleado>();
 		Double resultado=0.0;
