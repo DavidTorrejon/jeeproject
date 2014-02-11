@@ -4,7 +4,7 @@
        xmlns:ws="http://jax-ws.dev.java.net/spring/core"
        xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/beans/spring-beans-2.4.xsd
        http://jax-ws.dev.java.net/spring/core
         http://jax-ws.dev.java.net/spring/core.xsd
         http://jax-ws.dev.java.net/spring/servlet
