@@ -17,19 +17,6 @@
         http://jax-ws.dev.java.net/spring/core.xsd
         http://jax-ws.dev.java.net/spring/servlet
         http://jax-ws.java.net/spring/servlet.xsd">
- 
-    <wss:binding url="/empleadoService">
-        <wss:service>
-            <ws:service bean="#EmpleadoWs"/>
-        </wss:service>
-    </wss:binding>
- 
-    <!-- Web service methods -->
-    <bean id="EmpleadoWs" class="es.microforum.servicefrontendsoap.EmpleadoWebService">
-    	<property name="empleadoService" ref="empleadoService" />
-    </bean>
- 
-    <bean id="empleadoService" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
     
     <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -66,8 +53,17 @@
 	<context:annotation-config />
 
 	<context:component-scan base-package="es.microforum.serviceimpl" />
-
-	<jpa:repositories base-package="es.microforum.repository"
-		entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
+	
+	<wss:binding url="/empleadoService">
+        <wss:service>
+            <ws:service bean="#EmpleadoWs"/>
+        </wss:service>
+    </wss:binding>
  
+    <!-- Web service methods -->
+    <bean id="EmpleadoWs" class="es.microforum.servicefrontendsoap.EmpleadoWebService">
+    	<property name="empleadoService" ref="empleadoService" />
+    </bean>
+ 
+    <bean id="empleadoService" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
 </beans>
