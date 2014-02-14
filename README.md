@@ -13,3 +13,5 @@ Falta el proyecto SOAP, no he conseguido compilar el proyecto:
   Puede ver el proyecto service-frontendSOAP realizado pero no compila.
 
 Todos los demás módulos están realizados y comprobado su funcionamiento.
+
+Si pudiera decirme como solventar el error se lo agradecería. Muchas gracias Andrés
