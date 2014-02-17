@@ -4,22 +4,23 @@
        xmlns:ws="http://jax-ws.dev.java.net/spring/core"
        xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
        http://jax-ws.dev.java.net/spring/core
         http://jax-ws.dev.java.net/spring/core.xsd
         http://jax-ws.dev.java.net/spring/servlet
-        http://jax-ws.dev.java.net/spring/servlet.xsd">
+        http://jax-ws.java.net/spring/servlet.xsd"
+>
  
- 	<import resource="classpath:spring-data-app-context.xml" />
- 
+    <import resource="classpath:spring-data-app-context.xml" />
+    
     <wss:binding url="/empleadoService">
         <wss:service>
-            <ws:service bean="#EmpleadosWs"/>
+            <ws:service bean="#EmpleadoWs"/>
         </wss:service>
     </wss:binding>
  
     <!-- Web service methods -->
-    <bean id="EmpleadosWs" class="com.microforum.ws.jaxws.EmpleadoWebService">
+    <bean id="EmpleadoWs" class="com.microforum.ws.jaxws.EmpleadoWebService">
     	<property name="empleadoService" ref="empleadoService" />
     </bean>
  
