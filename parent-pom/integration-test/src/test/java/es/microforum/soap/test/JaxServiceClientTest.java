@@ -8,29 +8,19 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.microforum.ws.jaxws.IEmpleadoWebService;
 
 import es.microforum.model.Empleado;
 import es.microforum.serviceapi.EmpleadoService;
-import es.microforum.servicefrontendsoap.IEmpleadoWebService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
-@Transactional()
 public class JaxServiceClientTest {
 	
-	@Autowired
 	EmpleadoService empleadoService;
 	
-	List<Empleado> empleados;
+	List<Empleado> empleadosOld,empleadosNew;
 	
 	private IEmpleadoWebService empleadoWebService;
 
@@ -38,11 +28,13 @@ public class JaxServiceClientTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		empleados=new ArrayList<Empleado>();	
+		empleadosOld=new ArrayList<Empleado>();	
 				
 		try {
-			ApplicationContext context = new ClassPathXmlApplicationContext("applicationClientContext.xml");
+			ApplicationContext context = new ClassPathXmlApplicationContext("spring-data-app-context.xml");
 			empleadoWebService = (IEmpleadoWebService) context.getBean("jaxEmpleadoService");
+			
+			empleadoService = context.getBean("springJpaEmpleadoService", EmpleadoService.class);
 
 		} catch (Throwable t) {
 			t.printStackTrace();
@@ -54,49 +46,31 @@ public class JaxServiceClientTest {
 	public void testCallAumentoSueldo() {
 			
 		//Sueldo 23.0
+
+		Empleado viejo=new Empleado();
+			
+		empleadosOld = empleadoService.findAll();
 		
-		Empleado prueba=new Empleado();
-		Empleado mod=new Empleado();
-		
-		double result=0.0;
-		
-		empleados = empleadoService.findAll();
-		
-		/*try {
-			result = empleadoWebService.callAumentoSueldo(20.0);
-			assertTrue(result!=0);
+		try {
+			empleadosNew = empleadoWebService.callAumentoSueldo(20.0);
+			assertTrue(empleadosNew.size()!=0);
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail();
-		}*/
+		}
 		
-		List<Empleado>listEmpleado=new ArrayList<Empleado>();
-		Double resultado=0.0;
-		for(Empleado e:empleados){
+		for(Empleado e:empleadosOld){
 			empleadoService.save(e);
 			
-			mod=empleadoService.findByDni(e.getDni());
+			viejo=empleadoService.findByDni(e.getDni());
+		}	
 			
-			resultado=((e.getSalarioAnual()*result)/100)+e.getSalarioAnual();
-			
-			mod.setSalarioAnual(resultado);
-			
-			empleadoService.save(mod);
-			
-			listEmpleado.add(mod);
-		}		
-		
-		for(Empleado e:listEmpleado){
-			if(e.getDni().equals("1111")){
-				prueba=e;
+		for(Empleado e:empleadosNew){
+			if(e.getDni().equals(viejo.getDni())){
+				assertTrue(viejo.getSalarioAnual()*20.0/100+viejo.getSalarioAnual()==e.getSalarioAnual());	
 			}
 		}		
-		assertTrue(prueba.getSalarioAnual()==27.6);		
+			
 				
 	}
-	
-	private String auDis (double porcentaje){
-		return "";
-	}
-		
 }

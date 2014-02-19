@@ -21,7 +21,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>es.microforum</groupId>
+			<groupId>com.microforum</groupId>
 			<artifactId>service-frontendSOAP</artifactId>
 			<version>0.0.4-SNAPSHOT</version>
 			<scope>compile</scope>
@@ -66,6 +66,21 @@
 			<version>1.1.0.M1</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- JAX-WS -->
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.2.8</version>
+		</dependency>
+
+		<!-- Library from java.net, integrate Spring with JAX-WS -->
+		<dependency>
+			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
+			<artifactId>jaxws-spring</artifactId>
+			<version>1.9</version>
+		</dependency>
+
 	</dependencies>
 	<repositories>
 		<repository>
