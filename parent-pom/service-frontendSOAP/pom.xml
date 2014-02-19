@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.microforum</groupId>
 	<artifactId>service-frontendSOAP</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 
 	<packaging>war</packaging>
 	<url>http://maven.apache.org</url>
@@ -20,19 +20,19 @@
 		<dependency>
 			<groupId>es.microforum</groupId>
 			<artifactId>model</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.4</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>es.microforum</groupId>
 			<artifactId>service-api</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.4</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>es.microforum</groupId>
 			<artifactId>service-impl</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.4</version>
 			<scope>compile</scope>
 		</dependency>
 
