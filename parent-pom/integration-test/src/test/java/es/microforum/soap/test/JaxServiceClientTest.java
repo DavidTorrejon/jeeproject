@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.microforum.ws.jaxws.IEmpleadoWebService;
+import com.microforum.ws.jaxws.EmpleadoWebService;
 
 import es.microforum.model.Empleado;
 import es.microforum.serviceapi.EmpleadoService;
@@ -22,18 +22,17 @@ public class JaxServiceClientTest {
 	
 	List<Empleado> empleadosOld,empleadosNew;
 	
-	private IEmpleadoWebService empleadoWebService;
+	private EmpleadoWebService empleadoWebService;
 
 
 	@Before
 	public void setUp() throws Exception {
-		
-		empleadosOld=new ArrayList<Empleado>();	
-				
-		try {
-			ApplicationContext context = new ClassPathXmlApplicationContext("spring-data-app-context.xml");
-			empleadoWebService = (IEmpleadoWebService) context.getBean("jaxEmpleadoService");
 			
+		empleadosOld=new ArrayList<Empleado>();	
+		empleadoWebService=new EmpleadoWebService();
+		
+		try {		
+			ApplicationContext context = new ClassPathXmlApplicationContext("spring-data-app-context.xml");
 			empleadoService = context.getBean("springJpaEmpleadoService", EmpleadoService.class);
 
 		} catch (Throwable t) {
@@ -51,19 +50,20 @@ public class JaxServiceClientTest {
 			
 		empleadosOld = empleadoService.findAll();
 		
-		try {
-			empleadosNew = empleadoWebService.callAumentoSueldo(20.0);
-			assertTrue(empleadosNew.size()!=0);
-		} catch (Throwable t) {
-			t.printStackTrace();
-			fail();
-		}
-		
 		for(Empleado e:empleadosOld){
 			empleadoService.save(e);
 			
 			viejo=empleadoService.findByDni(e.getDni());
 		}	
+		
+		try {
+			empleadoWebService.setEmpleadoService(empleadoService);
+			empleadosNew = empleadoWebService.callAumentoSueldo(20.0);
+			assertTrue(empleadosNew.size()!=0);
+		} catch (Throwable t) {
+			t.printStackTrace();
+			fail();
+		}		
 			
 		for(Empleado e:empleadosNew){
 			if(e.getDni().equals(viejo.getDni())){
